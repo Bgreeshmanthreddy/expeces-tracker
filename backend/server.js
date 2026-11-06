@@ -11,6 +11,12 @@ dotenv.config({ path: path.join(__dirname, '.env') });
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+if (process.env.NODE_ENV === 'production' && !process.env.MONGODB_URI) {
+  throw new Error('MONGODB_URI must be configured in production.');
+}
+if (process.env.NODE_ENV === 'production' && !process.env.SESSION_SECRET) {
+  throw new Error('SESSION_SECRET must be configured in production.');
+}
 const mongoUri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/spendwise';
 
 // Connect to Database
@@ -19,7 +25,7 @@ connectDB();
 // Core Middleware
 app.use(
   cors({
-    origin: process.env.CLIENT_ORIGIN || 'http://localhost:5000',
+    origin: process.env.CLIENT_ORIGIN || process.env.RENDER_EXTERNAL_URL || 'http://localhost:5000',
     credentials: true,
   })
 );
