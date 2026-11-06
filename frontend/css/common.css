@@ -3,53 +3,63 @@
    Premium Dark Fintech Theme
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
 :root {
   /* Surface Colors */
-  --bg-main: #0B0B19;
-  --bg-sidebar: #090916;
-  --bg-card: #101024;
-  --bg-card-secondary: #15152B;
-  --bg-input: #0e0e22;
+  --bg-main: #070B14;
+  --bg-elevated: #0B1220;
+  --bg-sidebar: #080E1A;
+  --bg-card: #0E1626;
+  --bg-card-secondary: #141F33;
+  --bg-input: #0B1424;
 
   /* Accent Colors */
-  --accent-primary: #00E6A0;
-  --accent-secondary: #00C98B;
-  --accent-glow: rgba(0, 230, 160, 0.16);
-  --accent-light: rgba(0, 230, 160, 0.08);
+  --accent-primary: #2EE6A8;
+  --accent-secondary: #12C99B;
+  --accent-deep: #0A8F6F;
+  --accent-glow: rgba(46, 230, 168, 0.18);
+  --accent-light: rgba(46, 230, 168, 0.08);
 
   /* Financial Status Colors */
-  --color-income: #00E6A0;
-  --color-expense: #FF5B73;
-  --color-warning: #FFB347;
-  --color-info: #579BFF;
+  --color-income: #2EE6A8;
+  --color-expense: #FF6B81;
+  --color-warning: #F6C453;
+  --color-info: #5B9DFF;
 
   /* Chart Accents */
-  --chart-blue: #579BFF;
+  --chart-blue: #5B9DFF;
   --chart-purple: #A78BFA;
-  --chart-cyan: #06B6D4;
+  --chart-violet: #8B7CF6;
+  --chart-cyan: #22D3EE;
+  --chart-amber: #F6C453;
 
   /* Typography Colors */
-  --text-primary: #FFFFFF;
-  --text-secondary: #A0A0B8;
-  --text-muted: #64647D;
+  --text-primary: #F3F7FF;
+  --text-secondary: #A3B0C6;
+  --text-muted: #6B7890;
 
   /* Borders & Shadows */
-  --border-color: rgba(255, 255, 255, 0.07);
-  --border-focus: rgba(0, 230, 160, 0.45);
-  --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 20px rgba(0, 230, 160, 0.25);
+  --border-color: rgba(148, 163, 184, 0.12);
+  --border-strong: rgba(148, 163, 184, 0.2);
+  --border-focus: rgba(46, 230, 168, 0.55);
+  --shadow-card: 0 18px 40px -24px rgba(2, 6, 23, 0.9);
+  --shadow-soft: 0 8px 24px -18px rgba(2, 6, 23, 0.8);
+  --shadow-glow: 0 0 24px rgba(46, 230, 168, 0.28);
 
   /* Geometry */
-  --radius-sm: 8px;
+  --radius-sm: 9px;
   --radius-md: 12px;
-  --radius-lg: 16px;
+  --radius-lg: 18px;
   --radius-full: 9999px;
 
   /* Transition */
   --transition-fast: 0.18s ease;
   --transition-normal: 0.25s ease;
+
+  /* Typography */
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
 }
 
 /* Global Reset */
@@ -59,14 +69,61 @@
   padding: 0;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-body);
   background-color: var(--bg-main);
+  background-image:
+    radial-gradient(900px 520px at 12% -8%, rgba(46, 230, 168, 0.09), transparent 60%),
+    radial-gradient(760px 480px at 100% 0%, rgba(139, 124, 246, 0.08), transparent 55%),
+    radial-gradient(900px 700px at 50% 115%, rgba(91, 157, 255, 0.06), transparent 60%);
+  background-attachment: fixed;
   color: var(--text-primary);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+::selection {
+  background: rgba(46, 230, 168, 0.3);
+  color: #FFFFFF;
+}
+
+/* Slim, themed scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.28) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.22);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  border-radius: var(--radius-full);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.38);
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
 a {
@@ -90,8 +147,9 @@ button, input, select, textarea {
 }
 
 .form-label {
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   color: var(--text-secondary);
   display: flex;
   justify-content: space-between;
@@ -112,17 +170,43 @@ button, input, select, textarea {
   border-radius: var(--radius-md);
   color: var(--text-primary);
   font-size: 0.95rem;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
   outline: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+
+.form-control:hover {
+  border-color: var(--border-strong);
 }
 
 .form-control:focus {
   border-color: var(--border-focus);
+  background-color: #0C1729;
   box-shadow: 0 0 0 3px var(--accent-glow);
 }
 
 .form-control::placeholder {
   color: var(--text-muted);
+}
+
+/* Native picker icons on dark surfaces */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.75);
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+select.form-control {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23A3B0C6' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 38px;
+}
+
+select.form-control option {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
 }
 
 /* Button System */
@@ -131,48 +215,62 @@ button, input, select, textarea {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px 24px;
+  padding: 12px 22px;
   border-radius: var(--radius-md);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.93rem;
+  letter-spacing: 0.01em;
   cursor: pointer;
-  border: none;
+  border: 1px solid transparent;
   transition: all var(--transition-normal);
   text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn svg {
+  flex-shrink: 0;
 }
 
 .btn-primary {
-  background-color: var(--accent-primary);
-  color: #05050D;
-  box-shadow: 0 4px 15px rgba(0, 230, 160, 0.25);
+  background-image: linear-gradient(135deg, #3DF2B5 0%, #17D2A0 55%, #0FB98F 100%);
+  color: #032018;
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 24px -12px rgba(46, 230, 168, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
 .btn-primary:hover {
-  background-color: var(--accent-secondary);
-  box-shadow: var(--shadow-glow);
+  background-image: linear-gradient(135deg, #5CF7C4 0%, #22DCAB 55%, #12C99B 100%);
+  box-shadow: 0 14px 30px -12px rgba(46, 230, 168, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.4);
   transform: translateY(-1px);
 }
 
+.btn-primary:active {
+  transform: translateY(0);
+}
+
 .btn-secondary {
-  background-color: var(--bg-card-secondary);
+  background-color: rgba(20, 31, 51, 0.85);
   color: var(--text-primary);
   border: 1px solid var(--border-color);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .btn-secondary:hover {
-  background-color: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(28, 42, 68, 0.95);
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
 }
 
 .btn-danger {
-  background-color: rgba(255, 91, 115, 0.15);
+  background-color: rgba(255, 107, 129, 0.14);
   color: var(--color-expense);
-  border: 1px solid rgba(255, 91, 115, 0.3);
+  border: 1px solid rgba(255, 107, 129, 0.32);
 }
 
 .btn-danger:hover {
   background-color: var(--color-expense);
-  color: #FFFFFF;
+  border-color: var(--color-expense);
+  color: #1B0710;
 }
 
 .btn-block {
@@ -180,9 +278,10 @@ button, input, select, textarea {
 }
 
 .btn:disabled {
-  opacity: 0.6;
+  opacity: 0.55;
   cursor: not-allowed;
   transform: none !important;
+  box-shadow: none;
 }
 
 /* Toast Notifications */
@@ -203,11 +302,12 @@ button, input, select, textarea {
   max-width: 380px;
   padding: 14px 18px;
   border-radius: var(--radius-md);
-  background: var(--bg-card);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0) 60%), var(--bg-card);
   border: 1px solid var(--border-color);
   color: var(--text-primary);
   font-size: 0.9rem;
-  box-shadow: var(--shadow-card);
+  font-weight: 500;
+  box-shadow: 0 20px 44px -20px rgba(0, 0, 0, 0.9);
   display: flex;
   align-items: center;
   gap: 12px;
@@ -216,6 +316,7 @@ button, input, select, textarea {
 
 .toast.toast-success {
   border-left: 4px solid var(--accent-primary);
+  box-shadow: 0 20px 44px -22px rgba(46, 230, 168, 0.5);
 }
 
 .toast.toast-error {
@@ -241,5 +342,24 @@ button, input, select, textarea {
   to {
     opacity: 0;
     transform: translateY(-10px);
+  }
+}
+
+/* Numeric alignment for financial figures */
+.stat-card-value,
+.tx-amount,
+.legend-amount,
+.budget-spent-big,
+.goal-saved-bold,
+.doughnut-total-amount {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

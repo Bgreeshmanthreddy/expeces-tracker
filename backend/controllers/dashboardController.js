@@ -4,17 +4,17 @@ const User = require('../models/User');
 
 // Category color map aligned with the premium dark fintech theme
 const CATEGORY_COLORS = {
-  'Housing': '#579BFF',       // Chart Blue
-  'Food & Dining': '#00E6A0', // Neon Mint Green
-  'Transport': '#A78BFA',     // Chart Purple
-  'Entertainment': '#FF5B73', // Coral Red
-  'Shopping': '#FFB347',      // Amber
-  'Education': '#06B6D4',     // Cyan
-  'Healthcare': '#F43F5E',    // Rose
-  'Utilities': '#38BDF8',     // Sky Blue
-  'Salary': '#00E6A0',        // Mint
-  'Investment': '#10B981',    // Emerald
-  'Other': '#71717A'          // Muted Zinc
+  'Housing': '#5B9DFF',        // Chart Blue
+  'Food & Dining': '#2EE6A8',  // Emerald Mint
+  'Transport': '#A78BFA',      // Chart Violet
+  'Entertainment': '#FF6B81',  // Rose Coral
+  'Shopping': '#F6C453',       // Amber Gold
+  'Education': '#22D3EE',      // Cyan
+  'Healthcare': '#FB7185',     // Soft Rose
+  'Utilities': '#60A5FA',      // Sky Blue
+  'Salary': '#2EE6A8',         // Emerald Mint
+  'Investment': '#12C99B',     // Emerald
+  'Other': '#7C8AA0'           // Muted Slate
 };
 
 /**
@@ -301,14 +301,14 @@ const getCashFlow = async (req, res) => {
           {
             label: 'Income',
             data: incomeData,
-            borderColor: '#00E6A0', // Neon Green
-            backgroundColor: 'rgba(0, 230, 160, 0.12)'
+            borderColor: '#2EE6A8', // Emerald Mint
+            backgroundColor: 'rgba(46, 230, 168, 0.12)'
           },
           {
             label: 'Expense',
             data: expenseData,
-            borderColor: '#FF5B73', // Coral Red
-            backgroundColor: 'rgba(255, 91, 115, 0.12)'
+            borderColor: '#FF6B81', // Rose Coral
+            backgroundColor: 'rgba(255, 107, 129, 0.12)'
           }
         ]
       },
@@ -383,7 +383,7 @@ const getSpending = async (req, res) => {
             data: categories.map((c) => c.amount),
             backgroundColor: categories.map((c) => c.color),
             borderWidth: 2,
-            borderColor: '#101024' // Card background border
+            borderColor: '#0E1626' // Card background border
           }
         ]
       }

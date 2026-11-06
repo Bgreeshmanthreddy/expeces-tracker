@@ -10,7 +10,7 @@ function testFrontendFiles() {
     { file: 'index.html', check: 'SpendWise' },
     { file: 'login.html', check: 'Welcome back' },
     { file: 'signup.html', check: 'Create your account' },
-    { file: 'css/common.css', check: '--bg-main: #0B0B19' },
+    { file: 'css/common.css', check: '--bg-main: #070B14' },
     { file: 'css/auth.css', check: '.auth-card' },
     { file: 'js/api.js', check: 'export const api' },
     { file: 'js/auth.js', check: 'setupLoginForm' }

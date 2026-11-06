@@ -3,7 +3,8 @@
  * Pure Vanilla JavaScript ES Module using Fetch API
  */
 
-const API_BASE = '/api';
+const API_BASE = window.SPENDWISE_API_BASE ||
+  (window.location.hostname.endsWith('github.io') ? 'http://localhost:5000/api' : '/api');
 
 /**
  * Toast Notification System
@@ -71,11 +72,20 @@ async function request(endpoint, options = {}) {
  * Currency Formatter Utility
  */
 export function formatCurrency(amount, currency = 'INR') {
-  const symbol = currency === 'INR' ? '₹' : '$';
-  return `${symbol}${Number(amount || 0).toLocaleString('en-IN', {
+  const value = Number(amount || 0);
+  const settings = {
+    INR: { locale: 'en-IN', code: 'INR' },
+    USD: { locale: 'en-US', code: 'USD' },
+    EUR: { locale: 'en-IE', code: 'EUR' },
+    GBP: { locale: 'en-GB', code: 'GBP' }
+  }[currency] || { locale: 'en-IN', code: 'INR' };
+
+  return new Intl.NumberFormat(settings.locale, {
+    style: 'currency',
+    currency: settings.code,
     minimumFractionDigits: 0,
     maximumFractionDigits: 2
-  })}`;
+  }).format(value);
 }
 
 /**

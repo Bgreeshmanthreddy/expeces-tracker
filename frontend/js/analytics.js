@@ -112,14 +112,14 @@ function renderMonthlyChart(trends, cur) {
         {
           label: 'Income',
           data: trends.income,
-          backgroundColor: '#00E6A0',
+          backgroundColor: '#2EE6A8',
           borderRadius: 6,
           barPercentage: 0.6
         },
         {
           label: 'Expense',
           data: trends.expenses,
-          backgroundColor: '#FF5B73',
+          backgroundColor: '#FF6B81',
           borderRadius: 6,
           barPercentage: 0.6
         }
@@ -131,22 +131,27 @@ function renderMonthlyChart(trends, cur) {
       plugins: {
         legend: {
           position: 'top',
-          labels: { color: '#FFFFFF', font: { family: "'Inter', sans-serif" } }
+          labels: { color: '#F3F7FF', font: { family: "'Inter', sans-serif" } }
         },
         tooltip: {
-          backgroundColor: '#15152B',
-          borderColor: 'rgba(255, 255, 255, 0.1)',
+          backgroundColor: '#141F33',
+          borderColor: 'rgba(148, 163, 184, 0.2)',
           borderWidth: 1,
+          titleColor: '#F3F7FF',
+          bodyColor: '#A3B0C6',
           callbacks: {
             label: (ctx) => ` ${ctx.dataset.label}: ${formatCurrency(ctx.parsed.y, cur)}`
           }
         }
       },
       scales: {
-        x: { grid: { color: 'rgba(255, 255, 255, 0.04)' } },
+        x: {
+          grid: { color: 'rgba(148, 163, 184, 0.07)' },
+          ticks: { color: '#A3B0C6' }
+        },
         y: {
-          grid: { color: 'rgba(255, 255, 255, 0.04)' },
-          ticks: { callback: (v) => formatCurrency(v, cur) }
+          grid: { color: 'rgba(148, 163, 184, 0.07)' },
+          ticks: { color: '#A3B0C6', callback: (v) => formatCurrency(v, cur) }
         }
       }
     }
@@ -167,7 +172,7 @@ function renderCategoryDoughnut(categories, cur) {
         {
           data: categories.map((c) => c.totalAmount),
           backgroundColor: categories.map((c) => c.color),
-          borderColor: '#101024',
+          borderColor: '#0E1626',
           borderWidth: 3
         }
       ]
@@ -179,9 +184,11 @@ function renderCategoryDoughnut(categories, cur) {
       plugins: {
         legend: { display: false },
         tooltip: {
-          backgroundColor: '#15152B',
-          borderColor: 'rgba(255, 255, 255, 0.1)',
+          backgroundColor: '#141F33',
+          borderColor: 'rgba(148, 163, 184, 0.2)',
           borderWidth: 1,
+          titleColor: '#F3F7FF',
+          bodyColor: '#A3B0C6',
           callbacks: {
             label: (ctx) => ` ${ctx.label}: ${formatCurrency(ctx.parsed, cur)}`
           }
@@ -220,7 +227,7 @@ function renderCategoriesTable(categories, cur) {
             </div>
           </div>
         </td>
-        <td><span class="badge badge-outline">${c.count} transactions</span></td>
+        <td><span class="badge badge-outline">${c.count} transaction${c.count === 1 ? '' : 's'}</span></td>
         <td>${formatCurrency(c.avgAmount, cur)}</td>
         <td>${formatCurrency(c.maxAmount, cur)}</td>
       </tr>

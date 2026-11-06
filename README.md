@@ -1,6 +1,6 @@
 # SpendWise – Premium Finance Management Web Application
 
-SpendWise is a full-stack personal finance and wealth tracking web application built with a premium dark fintech aesthetic (`#0B0B19` deep navy with `#00E6A0` neon mint accents). It empowers users to monitor their net cash balance, track categorized cash flows, manage monthly budgets, and reach savings goals with real-time analytics.
+SpendWise is a full-stack personal finance and wealth tracking web application built with a premium dark fintech aesthetic (`#070B14` midnight navy with `#2EE6A8` emerald accents). It empowers users to monitor their net cash balance, track categorized cash flows, manage monthly budgets, and reach savings goals with real-time analytics.
 
 ---
 
@@ -10,18 +10,18 @@ SpendWise follows a dark SaaS design language:
 
 | Design Token | Hex Code | Purpose |
 | :--- | :--- | :--- |
-| **Main Background** | `#0B0B19` | Deep navy application canvas |
-| **Sidebar Surface** | `#090916` | Dark navy navigation surface |
-| **Primary Card** | `#101024` | Elevated dashboard widgets & tables |
-| **Secondary Surface** | `#15152B` | Inner item cards, pills & inputs |
-| **Primary Accent** | `#00E6A0` | Neon mint call-to-actions, active state & positive trends |
-| **Secondary Accent** | `#00C98B` | Hover & focus highlights |
-| **Income Indicator** | `#00E6A0` | Positive transactions & cash inflows |
-| **Expense Indicator** | `#FF5B73` | Coral red for expenses & alerts |
-| **Chart Blue** | `#579BFF` | Cash flow visualization accents |
+| **Main Background** | `#070B14` | Midnight navy application canvas |
+| **Sidebar Surface** | `#080E1A` | Dark navy navigation surface |
+| **Primary Card** | `#0E1626` | Elevated dashboard widgets & tables |
+| **Secondary Surface** | `#141F33` | Inner item cards, pills & inputs |
+| **Primary Accent** | `#2EE6A8` | Emerald call-to-actions, active state & positive trends |
+| **Secondary Accent** | `#12C99B` | Hover & focus highlights |
+| **Income Indicator** | `#2EE6A8` | Positive transactions & cash inflows |
+| **Expense Indicator** | `#FF6B81` | Coral rose for expenses & alerts |
+| **Chart Blue** | `#5B9DFF` | Cash flow visualization accents |
 | **Chart Purple** | `#A78BFA` | Savings rate & auxiliary indicators |
 
-Typography is rendered in **Inter** with clean geometry (16px rounded cards, subtle 1px border `rgba(255, 255, 255, 0.07)`, and soft neon glows).
+Typography is rendered in **Inter** for body copy and **Plus Jakarta Sans** for display headings, with clean geometry (18px rounded cards, subtle 1px border `rgba(148, 163, 184, 0.12)`, tabular numerals for financial figures, and soft emerald glows).
 
 ---
 

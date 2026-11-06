@@ -137,7 +137,7 @@ async function loadBudgets() {
         </div>
       `;
       document.getElementById('set-overall-btn')?.addEventListener('click', () => {
-        openBudgetModal({ category: 'Overall', amount: '' });
+        openBudgetModal();
       });
     }
 

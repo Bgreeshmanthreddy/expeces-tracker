@@ -143,7 +143,7 @@ function setupPeriodFilter() {
  * 5. Initialize Chart.js Options with Dark Fintech Theme
  */
 function setupCharts() {
-  Chart.defaults.color = '#A0A0B8';
+  Chart.defaults.color = '#A3B0C6';
   Chart.defaults.font.family = "'Inter', -apple-system, sans-serif";
   Chart.defaults.font.size = 12;
 
@@ -158,25 +158,27 @@ function setupCharts() {
           {
             label: 'Income',
             data: [],
-            borderColor: '#00E6A0',
-            backgroundColor: 'rgba(0, 230, 160, 0.1)',
+            borderColor: '#2EE6A8',
+            backgroundColor: 'rgba(46, 230, 168, 0.12)',
             fill: true,
             tension: 0.4,
             pointRadius: 4,
             pointHoverRadius: 6,
-            pointBackgroundColor: '#00E6A0',
+            pointBackgroundColor: '#2EE6A8',
+            pointBorderColor: '#0E1626',
             borderWidth: 2.5
           },
           {
             label: 'Expense',
             data: [],
-            borderColor: '#FF5B73',
-            backgroundColor: 'rgba(255, 91, 115, 0.1)',
+            borderColor: '#FF6B81',
+            backgroundColor: 'rgba(255, 107, 129, 0.1)',
             fill: true,
             tension: 0.4,
             pointRadius: 4,
             pointHoverRadius: 6,
-            pointBackgroundColor: '#FF5B73',
+            pointBackgroundColor: '#FF6B81',
+            pointBorderColor: '#0E1626',
             borderWidth: 2.5
           }
         ]
@@ -187,11 +189,11 @@ function setupCharts() {
         plugins: {
           legend: { display: false },
           tooltip: {
-            backgroundColor: '#15152B',
-            borderColor: 'rgba(255, 255, 255, 0.1)',
+            backgroundColor: '#141F33',
+            borderColor: 'rgba(148, 163, 184, 0.2)',
             borderWidth: 1,
-            titleColor: '#FFFFFF',
-            bodyColor: '#A0A0B8',
+            titleColor: '#F3F7FF',
+            bodyColor: '#A3B0C6',
             padding: 12,
             callbacks: {
               label: function (ctx) {
@@ -202,11 +204,13 @@ function setupCharts() {
         },
         scales: {
           x: {
-            grid: { color: 'rgba(255, 255, 255, 0.04)' }
+            grid: { color: 'rgba(148, 163, 184, 0.07)' },
+            ticks: { color: '#A3B0C6' }
           },
           y: {
-            grid: { color: 'rgba(255, 255, 255, 0.04)' },
+            grid: { color: 'rgba(148, 163, 184, 0.07)' },
             ticks: {
+              color: '#A3B0C6',
               callback: function (val) {
                 return formatCurrency(val, currentUser?.currency);
               }
@@ -228,9 +232,10 @@ function setupCharts() {
           {
             data: [],
             backgroundColor: [],
-            borderColor: '#101024',
+            borderColor: '#0E1626',
             borderWidth: 3,
-            hoverOffset: 4
+            hoverOffset: 4,
+            hoverBorderColor: '#0E1626'
           }
         ]
       },
@@ -241,11 +246,11 @@ function setupCharts() {
         plugins: {
           legend: { display: false },
           tooltip: {
-            backgroundColor: '#15152B',
-            borderColor: 'rgba(255, 255, 255, 0.1)',
+            backgroundColor: '#141F33',
+            borderColor: 'rgba(148, 163, 184, 0.2)',
             borderWidth: 1,
-            titleColor: '#FFFFFF',
-            bodyColor: '#A0A0B8',
+            titleColor: '#F3F7FF',
+            bodyColor: '#A3B0C6',
             padding: 12,
             callbacks: {
               label: function (ctx) {
@@ -386,7 +391,7 @@ async function loadRecentTransactions() {
         return `
         <div class="tx-item" data-id="${tx._id}">
           <div class="tx-left">
-            <div class="tx-icon" style="background-color: ${isIncome ? 'rgba(0, 230, 160, 0.1)' : 'rgba(255, 91, 115, 0.1)'};">
+            <div class="tx-icon" style="background-color: ${isIncome ? 'rgba(46, 230, 168, 0.1)' : 'rgba(255, 107, 129, 0.1)'};">
               ${icon}
             </div>
             <div class="tx-meta">

@@ -2,15 +2,15 @@ const mongoose = require('mongoose');
 const Transaction = require('../models/Transaction');
 
 const CATEGORY_COLORS = {
-  'Housing': '#579BFF',
-  'Food & Dining': '#00E6A0',
+  'Housing': '#5B9DFF',
+  'Food & Dining': '#2EE6A8',
   'Transport': '#A78BFA',
-  'Entertainment': '#FF5B73',
-  'Shopping': '#FFB347',
-  'Education': '#06B6D4',
-  'Healthcare': '#F43F5E',
-  'Utilities': '#38BDF8',
-  'Other': '#71717A'
+  'Entertainment': '#FF6B81',
+  'Shopping': '#F6C453',
+  'Education': '#22D3EE',
+  'Healthcare': '#FB7185',
+  'Utilities': '#60A5FA',
+  'Other': '#7C8AA0'
 };
 
 /**
