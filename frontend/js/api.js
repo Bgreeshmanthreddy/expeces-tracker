@@ -35,7 +35,17 @@ export function showToast(message, type = 'info') {
  */
 async function request(endpoint, options = {}) {
   if (isDemoMode()) {
-    return demoRequest(endpoint, options);
+    const response = await demoRequest(endpoint, options);
+    const data = await response.json();
+
+    if (!response.ok) {
+      if (response.status === 401 && !window.location.pathname.includes('login') && !window.location.pathname.includes('signup')) {
+        window.location.href = 'login.html';
+      }
+      throw new Error(data.message || `Request failed with status ${response.status}`);
+    }
+
+    return data;
   }
 
   const url = `${API_BASE}${endpoint}`;
