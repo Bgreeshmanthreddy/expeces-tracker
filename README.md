@@ -157,7 +157,7 @@ Inside the `backend/` directory, verify that `.env` is configured (a template is
 PORT=5000
 NODE_ENV=development
 MONGODB_URI=mongodb://127.0.0.1:27017/spendwise
-SESSION_SECRET=spendwise_super_secret_session_key_2026
+SESSION_SECRET=replace-with-a-long-random-secret
 CLIENT_ORIGIN=http://localhost:5000
 ```
 
@@ -190,6 +190,18 @@ Open your browser and navigate to:
 - If you are not signed in, you will be redirected to `login.html`.
 - Click **Create an account** (`signup.html`) to register your account.
 - Once signed in, you will land directly in your fintech dashboard!
+
+## ☁️ Production Deployment (Render + MongoDB Atlas)
+
+The app is a full-stack Node.js application; GitHub Pages cannot run its API or database. A Render Blueprint is provided in `render.yaml` to deploy the frontend and API together.
+
+1. Create a MongoDB Atlas database and a database user with a strong, unique password. Configure Atlas Network Access to allow the Render service to connect.
+2. Sign in to [Render](https://render.com/) with the GitHub account that can access this repository.
+3. In Render, choose **New → Blueprint**, select `Bgreeshmanthreddy/expeces-tracker`, and deploy the `main` branch.
+4. When prompted, set `MONGODB_URI` to the Atlas connection string. Render generates `SESSION_SECRET` automatically; do not reuse a local or example secret.
+5. After deployment succeeds, use the Render service URL shown in the dashboard. The health endpoint is `/api/health`.
+
+The free Render service may sleep when idle and take a short time to wake up. Keep database credentials in Render's environment settings only; never commit them to the repository.
 
 ---
 
