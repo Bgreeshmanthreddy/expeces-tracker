@@ -3,9 +3,7 @@
  * Pure Vanilla JavaScript ES Module using Fetch API
  */
 
-const API_BASE = window.location.origin.includes('5000')
-  ? '/api'
-  : 'http://localhost:5000/api';
+const API_BASE = '/api';
 
 /**
  * Toast Notification System
