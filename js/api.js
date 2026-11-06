@@ -3,8 +3,9 @@
  * Pure Vanilla JavaScript ES Module using Fetch API
  */
 
-const API_BASE = window.SPENDWISE_API_BASE ||
-  (window.location.hostname.endsWith('github.io') ? 'http://localhost:5000/api' : '/api');
+import { isDemoMode, demoRequest } from './demo-api.js';
+
+const API_BASE = window.SPENDWISE_API_BASE || '/api';
 
 /**
  * Toast Notification System
@@ -33,6 +34,10 @@ export function showToast(message, type = 'info') {
  * Core HTTP Request Wrapper
  */
 async function request(endpoint, options = {}) {
+  if (isDemoMode()) {
+    return demoRequest(endpoint, options);
+  }
+
   const url = `${API_BASE}${endpoint}`;
   const defaultHeaders = {
     'Content-Type': 'application/json'

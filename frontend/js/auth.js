@@ -1,11 +1,41 @@
 import { api, showToast } from './api.js';
+import { isDemoMode, DEMO_ACCOUNT } from './demo-api.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   setupPasswordToggles();
   setupLoginForm();
   setupSignupForm();
+  setupDemoHint();
   checkUrlMessages();
 });
+
+/**
+ * Static demo notice shown only when the app runs without its backend
+ */
+function setupDemoHint() {
+  if (!isDemoMode()) return;
+
+  const form = document.getElementById('login-form');
+  if (!form || document.getElementById('demo-hint')) return;
+
+  const hint = document.createElement('div');
+  hint.id = 'demo-hint';
+  hint.className = 'alert-inline alert-success';
+  hint.style.display = 'block';
+  hint.style.cursor = 'pointer';
+  hint.style.lineHeight = '1.6';
+  hint.innerHTML = `Demo mode: tap to fill <strong>${DEMO_ACCOUNT.email}</strong> / <strong>${DEMO_ACCOUNT.password}</strong>, or create a new account. Data is saved in this browser.`;
+
+  hint.addEventListener('click', () => {
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    if (emailInput) emailInput.value = DEMO_ACCOUNT.email;
+    if (passwordInput) passwordInput.value = DEMO_ACCOUNT.password;
+    if (emailInput) emailInput.focus();
+  });
+
+  form.parentNode.insertBefore(hint, form);
+}
 
 /**
  * Password Visibility Toggle
